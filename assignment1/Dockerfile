@@ -21,18 +21,13 @@ RUN apt-get install -y libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev \
     && make install-shared INSTALL_PATH=/usr
 RUN pip install pyrocksdb
 
-# gRPC @https://github.com/grpc/grpc-docker-library/blob/master/1.4/python/Dockerfile
-# ENV GRPC_PYTHON_VERSION 1.4.0
-# RUN pip install grpcio==${GRPC_PYTHON_VERSION} grpcio-tools==${GRPC_PYTHON_VERSION}
-
 # Install flask
 RUN pip install flask
 
 # Copy files to docker container
 Add *.py /
 
-
-
+# Run python script
 CMD ["python3.6", "assignment1.py"]
 
 
