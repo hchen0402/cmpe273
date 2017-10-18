@@ -28,6 +28,9 @@ RUN pip install pyrocksdb
 # Install flask
 RUN pip install flask
 
+# Copy files to docker container
+Add *.py /
+
 
 
 CMD ["python3.6", "assignment1.py"]
