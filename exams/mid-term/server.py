@@ -56,8 +56,8 @@ class EncoderServer(encoder_pb2.EncoderServicer):
         shortURL.reverse()
 
         print("Decode:\n", request)
-        return encoder_pb2.DecodeResponse(url=(''.join(shortURL)))
 
+        return encoder_pb2.DecodeResponse(url=(''.join(shortURL)))
 
 def run(host, port):
     '''
