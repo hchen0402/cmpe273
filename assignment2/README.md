@@ -28,48 +28,48 @@ docker run -it --rm --name lab1-client -v "$PWD":/usr/src/myapp -w /usr/src/myap
 Client is connecting to Server at 192.168.0.1:3000...
 
 ## PUT Request: value = foo
-## PUT Response: key = ae92be85e7ff4351866f05bfc83598bb
-## GET Request: key = ae92be85e7ff4351866f05bfc83598bb
+## PUT Response: key = 6ab47f0373cd4283b31fe0ec33a8754b
+## GET Request: key = 6ab47f0373cd4283b31fe0ec33a8754b
 ## GET Response: value = foo
 
 ## PUT Request: value = bar
-## PUT Response: key = e5e2b96aede84c05b30de814684d5210
-## GET Request: key = e5e2b96aede84c05b30de814684d5210
+## PUT Response: key = 8a9055417ad6414091894c5b5b4b5188
+## GET Request: key = 8a9055417ad6414091894c5b5b4b5188
 ## GET Response: value = bar
 
 ## PUT Request: value = hello
-## PUT Response: key = 2a5a4dadaa834340a94bbc897ac0c7f0
-## GET Request: key = 2a5a4dadaa834340a94bbc897ac0c7f0
+## PUT Response: key = 00d05f72a3e849ba8f6896db8ba8d2bd
+## GET Request: key = 00d05f72a3e849ba8f6896db8ba8d2bd
 ## GET Response: value = hello
 
 ## PUT Request: value = world
-## PUT Response: key = 576f730f19a240b4a630e4a1056af556
-## GET Request: key = 576f730f19a240b4a630e4a1056af556
+## PUT Response: key = 8c744e0794334b56885b4cbe2e2fa4c3
+## GET Request: key = 8c744e0794334b56885b4cbe2e2fa4c3
 ## GET Response: value = world
 
-########Follower Replicator########
-{ae92be85e7ff4351866f05bfc83598bb : foo} has been stored in the follower's DB.
-{e5e2b96aede84c05b30de814684d5210 : bar} has been stored in the follower's DB.
-{2a5a4dadaa834340a94bbc897ac0c7f0 : hello} has been stored in the follower's DB.
-{576f730f19a240b4a630e4a1056af556 : world} has been stored in the follower's DB.
+@@@@@@@@@@@@@@Follower Replicator@@@@@@@@@@@@@@
+{6ab47f0373cd4283b31fe0ec33a8754b : foo} has been stored in the follower's DB.
+{8a9055417ad6414091894c5b5b4b5188 : bar} has been stored in the follower's DB.
+{00d05f72a3e849ba8f6896db8ba8d2bd : hello} has been stored in the follower's DB.
+{8c744e0794334b56885b4cbe2e2fa4c3 : world} has been stored in the follower's DB.
 
 ## PUT Request: value = This
-## PUT Response: key = 58bb358d3d1e49a594f632c517ee172e
-## GET Request: key = 58bb358d3d1e49a594f632c517ee172e
+## PUT Response: key = fc55907c91d6495ebe25a0a6cd043cbf
+## GET Request: key = fc55907c91d6495ebe25a0a6cd043cbf
 ## GET Response: value = This
 
 ## PUT Request: value = is
-## PUT Response: key = b95edb9c4a664e408f771be65d20f5b2
-## GET Request: key = b95edb9c4a664e408f771be65d20f5b2
+## PUT Response: key = 58ca973b7f3440cf9265f14ea37f8442
+## GET Request: key = 58ca973b7f3440cf9265f14ea37f8442
 ## GET Response: value = is
 
 ## PUT Request: value = cmpe273
-## PUT Response: key = bfe80fd0b427454aabd8b3b024e31225
-## GET Request: key = bfe80fd0b427454aabd8b3b024e31225
+## PUT Response: key = 538bb7f2bd2d4f73a329ffb4ba7c38f0
+## GET Request: key = 538bb7f2bd2d4f73a329ffb4ba7c38f0
 ## GET Response: value = cmpe273
 
-########Follower Replicator########
-{58bb358d3d1e49a594f632c517ee172e : This} has been stored in the follower's DB.
-{b95edb9c4a664e408f771be65d20f5b2 : is} has been stored in the follower's DB.
-{bfe80fd0b427454aabd8b3b024e31225 : cmpe273} has been stored in the follower's DB.
+@@@@@@@@@@@@@@Follower Replicator@@@@@@@@@@@@@@
+{fc55907c91d6495ebe25a0a6cd043cbf : This} has been stored in the follower's DB.
+{58ca973b7f3440cf9265f14ea37f8442 : is} has been stored in the follower's DB.
+{538bb7f2bd2d4f73a329ffb4ba7c38f0 : cmpe273} has been stored in the follower's DB.
 ```

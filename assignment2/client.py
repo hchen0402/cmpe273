@@ -78,7 +78,7 @@ def main():
         value_response = client.get(key)
         print("## GET Response: value = " + value_response.data)
 
-    print("\n########Follower Replicator########")
+    print("\n@@@@@@@@@@@@@@Follower Replicator@@@@@@@@@@@@@@")
     client.replicator();
 
     requests = client.replicator_put(generate_requests_again())
@@ -89,7 +89,7 @@ def main():
         value_response = client.get(key)
         print("## GET Response: value = " + value_response.data)
 
-    print("\n########Follower Replicator########")
+    print("\n@@@@@@@@@@@@@@Follower Replicator@@@@@@@@@@@@@@")
     client.replicator();
 
 
