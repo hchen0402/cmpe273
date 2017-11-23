@@ -16,7 +16,7 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 class MyDatastoreServicer(datastore_pb2.DatastoreServicer):
     def __init__(self):
-        self.db = rocksdb.DB("lab1.db", rocksdb.Options(create_if_missing=True))
+        self.db = rocksdb.DB("assignment2.db", rocksdb.Options(create_if_missing=True))
 
     def put(self, request, context):
         print("put")
