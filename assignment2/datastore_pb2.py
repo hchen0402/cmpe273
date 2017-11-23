@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='datastore.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x64\x61tastore.proto\"\x17\n\x07Request\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"\x18\n\x08Response\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t2G\n\tDatastore\x12\x1c\n\x03put\x12\x08.Request\x1a\t.Response\"\x00\x12\x1c\n\x03get\x12\x08.Request\x1a\t.Response\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x64\x61tastore.proto\"\x17\n\x07Request\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"\x18\n\x08Response\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t2\x9b\x01\n\tDatastore\x12\x1c\n\x03put\x12\x08.Request\x1a\t.Response\"\x00\x12\x1c\n\x03get\x12\x08.Request\x1a\t.Response\"\x00\x12+\n\x0ereplicator_put\x12\x08.Request\x1a\t.Response\"\x00(\x01\x30\x01\x12%\n\nreplicator\x12\x08.Request\x1a\t.Response\"\x00\x30\x01\x62\x06proto3')
 )
 
 
@@ -135,6 +135,16 @@ try:
           request_serializer=Request.SerializeToString,
           response_deserializer=Response.FromString,
           )
+      self.replicator_put = channel.stream_stream(
+          '/Datastore/replicator_put',
+          request_serializer=Request.SerializeToString,
+          response_deserializer=Response.FromString,
+          )
+      self.replicator = channel.unary_stream(
+          '/Datastore/replicator',
+          request_serializer=Request.SerializeToString,
+          response_deserializer=Response.FromString,
+          )
 
 
   class DatastoreServicer(object):
@@ -155,6 +165,20 @@ try:
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
 
+    def replicator_put(self, request_iterator, context):
+      # missing associated documentation comment in .proto file
+      pass
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def replicator(self, request, context):
+      # missing associated documentation comment in .proto file
+      pass
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
 
   def add_DatastoreServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -165,6 +189,16 @@ try:
         ),
         'get': grpc.unary_unary_rpc_method_handler(
             servicer.get,
+            request_deserializer=Request.FromString,
+            response_serializer=Response.SerializeToString,
+        ),
+        'replicator_put': grpc.stream_stream_rpc_method_handler(
+            servicer.replicator_put,
+            request_deserializer=Request.FromString,
+            response_serializer=Response.SerializeToString,
+        ),
+        'replicator': grpc.unary_stream_rpc_method_handler(
+            servicer.replicator,
             request_deserializer=Request.FromString,
             response_serializer=Response.SerializeToString,
         ),
@@ -190,6 +224,14 @@ try:
       # missing associated documentation comment in .proto file
       pass
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def replicator_put(self, request_iterator, context):
+      # missing associated documentation comment in .proto file
+      pass
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def replicator(self, request, context):
+      # missing associated documentation comment in .proto file
+      pass
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
   class BetaDatastoreStub(object):
@@ -210,6 +252,14 @@ try:
       pass
       raise NotImplementedError()
     get.future = None
+    def replicator_put(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+      # missing associated documentation comment in .proto file
+      pass
+      raise NotImplementedError()
+    def replicator(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      # missing associated documentation comment in .proto file
+      pass
+      raise NotImplementedError()
 
 
   def beta_create_Datastore_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -221,14 +271,20 @@ try:
     request_deserializers = {
       ('Datastore', 'get'): Request.FromString,
       ('Datastore', 'put'): Request.FromString,
+      ('Datastore', 'replicator'): Request.FromString,
+      ('Datastore', 'replicator_put'): Request.FromString,
     }
     response_serializers = {
       ('Datastore', 'get'): Response.SerializeToString,
       ('Datastore', 'put'): Response.SerializeToString,
+      ('Datastore', 'replicator'): Response.SerializeToString,
+      ('Datastore', 'replicator_put'): Response.SerializeToString,
     }
     method_implementations = {
       ('Datastore', 'get'): face_utilities.unary_unary_inline(servicer.get),
       ('Datastore', 'put'): face_utilities.unary_unary_inline(servicer.put),
+      ('Datastore', 'replicator'): face_utilities.unary_stream_inline(servicer.replicator),
+      ('Datastore', 'replicator_put'): face_utilities.stream_stream_inline(servicer.replicator_put),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -243,14 +299,20 @@ try:
     request_serializers = {
       ('Datastore', 'get'): Request.SerializeToString,
       ('Datastore', 'put'): Request.SerializeToString,
+      ('Datastore', 'replicator'): Request.SerializeToString,
+      ('Datastore', 'replicator_put'): Request.SerializeToString,
     }
     response_deserializers = {
       ('Datastore', 'get'): Response.FromString,
       ('Datastore', 'put'): Response.FromString,
+      ('Datastore', 'replicator'): Response.FromString,
+      ('Datastore', 'replicator_put'): Response.FromString,
     }
     cardinalities = {
       'get': cardinality.Cardinality.UNARY_UNARY,
       'put': cardinality.Cardinality.UNARY_UNARY,
+      'replicator': cardinality.Cardinality.UNARY_STREAM,
+      'replicator_put': cardinality.Cardinality.STREAM_STREAM,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
     return beta_implementations.dynamic_stub(channel, 'Datastore', cardinalities, options=stub_options)

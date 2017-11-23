@@ -8,7 +8,10 @@ message Response {
     string data = 1;
 }
 
+
 service Datastore {
    rpc put(Request) returns (Response) {}
    rpc get(Request) returns (Response) {}
+   rpc replicator_put(stream Request) returns (stream Response) {}
+   rpc replicator(Request) returns (stream Response) {}
 }
